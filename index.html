@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>METAIMPERIYA — Полный каталог | Sims 4 CC</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0a0f1f 0%, #0b1025 100%);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Roboto', sans-serif;
+      color: #f0f3fa;
+      padding: 2rem 1.5rem;
+      line-height: 1.4;
+    }
+
+    /* контейнер с максимальной шириной для комфорта */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* главный заголовок с эффектом */
+    .hero {
+      text-align: center;
+      margin-bottom: 2.8rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      background: linear-gradient(135deg, #FFB347, #FF6A3D, #c084fc);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: inline-block;
+      padding: 0 0.5rem;
+    }
+
+    .hero .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(4px);
+      border-radius: 100px;
+      padding: 0.3rem 1rem;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      color: #b9c3e6;
+      border: 1px solid rgba(96,165,250,0.4);
+    }
+
+    /* сетка карточек */
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+
+    /* карточка блока */
+    .block {
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 28px;
+      padding: 1.4rem 1.2rem 1.6rem 1.2rem;
+      transition: all 0.25s ease;
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.4);
+    }
+
+    .block:hover {
+      transform: translateY(-4px);
+      border-color: rgba(96, 165, 250, 0.6);
+      background: rgba(25, 34, 55, 0.9);
+      box-shadow: 0 24px 36px -14px rgba(0,0,0,0.5);
+    }
+
+    /* заголовок секции с иконкой */
+    .block h2 {
+      font-size: 1.65rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(96, 165, 250, 0.5);
+      display: inline-block;
+      letter-spacing: -0.3px;
+      background: linear-gradient(120deg, #fff, #a5c9ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* список ссылок */
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    /* стилизованные ссылки как кнопки-карточки */
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.7rem 1rem;
+      border-radius: 18px;
+      transition: 0.2s;
+      text-decoration: none;
+      color: #e2e8ff;
+      font-weight: 500;
+      border: 1px solid rgba(96, 165, 250, 0.2);
+    }
+
+    .link-card:hover {
+      background: #1e2a4a;
+      border-color: #60a5fa;
+      color: white;
+      transform: translateX(6px);
+    }
+
+    /* эмодзи/иконка перед ссылкой */
+    .link-icon {
+      font-size: 1.3rem;
+      min-width: 28px;
+      text-align: center;
+      filter: drop-shadow(0 0 2px #60a5fa);
+    }
+
+    .link-text {
+      flex: 1;
+      font-size: 0.98rem;
+      letter-spacing: 0.2px;
+    }
+
+    /* специальные метки для нерабочих ссылок-заглушек */
+    .placeholder-tag {
+      font-size: 0.7rem;
+      background: #2d3748;
+      padding: 2px 10px;
+      border-radius: 40px;
+      color: #9ca3af;
+      margin-left: 8px;
+      font-weight: normal;
+    }
+
+    /* маленький подвал */
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+      border-top: 1px solid #1e293b;
+      padding-top: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 1rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .block h2 {
+        font-size: 1.4rem;
+      }
+      .link-text {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* анимация появления */
+    .block {
+      animation: fadeSlideUp 0.4s ease backwards;
+    }
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>🔥 METAIMPERIYA<br>ПОЛНЫЙ КАТАЛОГ</h1>
+    <div class="badge">🎮 The Sims 4 | CC | Mods | Анимации | Fashion</div>
+  </div>
+
+  <div class="catalog-grid">
+    
+    <!-- БЛОК 1: Mods -->
+    <div class="block">
+      <h2>📂 Mods</h2>
+      <div class="links-list">
+        <a href="http://t.me/modsTheSims4" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🔧</span><span class="link-text">MAIN MODS</span></a>
+        <a href="http://t.me/COREMODSSims4" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">⚙️</span><span class="link-text">CoreMods</span></a>
+        <a href="https://t.me/ts4_script" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">📜</span><span class="link-text">Scripts</span></a>
+        <a href="https://t.me/TS4CAS" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">👤</span><span class="link-text">CAS</span></a>
+        <a href="https://t.me/ObjectCC" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">📦</span><span class="link-text">Objects</span></a>
+        <a href="https://t.me/ts4_Build" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🏗️</span><span class="link-text">Build</span></a>
+        <a href="https://t.me/ts4Animations" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🎬</span><span class="link-text">Animations</span></a>
+      </div>
+    </div>
+
+    <!-- БЛОК 2: Fashion -->
+    <div class="block">
+      <h2>📂 Fashion</h2>
+      <div class="links-list">
+        <a href="https://t.me/+g4TEX1imZG5mYWQy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">👗</span><span class="link-text">Fashion Main</span></a>
+        <a href="https://t.me/+MdEhSPg0iBxkOTAy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🧥</span><span class="link-text">Clothes</span></a>
+        <a href="https://t.me/+pOg64xvPyIAwZmQ6" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">👠</span><span class="link-text">Shoes</span></a>
+        <a href="https://t.me/+HFrnNPhWZN1iMWUy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">💍</span><span class="link-text">Accessories</span></a>
+        <a href="https://t.me/+smvWF3JXS9Y4MGYy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">✏️</span><span class="link-text">Character Creation</span></a>
+      </div>
+    </div>
+
+    <!-- БЛОК 3: Animations & Scenes -->
+    <div class="block">
+      <h2>📂 Animations & Scenes</h2>
+      <div class="links-list">
+        <a href="https://t.me/+Kjn-Rawl0cE5YWI6" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🎞️</span><span class="link-text">Animations Main</span></a>
+        <a href="https://t.me/+eFv5SOVEjEM2ZDcy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🔞</span><span class="link-text">WickedWhims 18+</span></a>
+        <a href="https://t.me/+33NXPEhu4kFiOTYy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">📸</span><span class="link-text">Poses</span></a>
+        <a href="https://t.me/+zNhaDzDRwQ5kMzk6" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">⚡</span><span class="link-text">Action Animations</span></a>
+        <a href="https://t.me/+xkAdkM8x5yBkYzEy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🎭</span><span class="link-text">Scene Packs</span></a>
+      </div>
+    </div>
+
+    <!-- БЛОК 4: Gameplay Mods (с плейсхолдерами из оригинальной разметки, но стильно) -->
+    <div class="block">
+      <h2>📂 Gameplay Mods</h2>
+      <div class="links-list">
+        <a href="https://t.me/+Lscong4GW7w0ZGNi" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🎮</span><span class="link-text">Gameplay Main</span></a>
+        <!-- нижние три ссылки были заглушками # в оригинале, сохраняем с пометкой "скоро" или просто стилизуем как неактивные, но оставляем для полноты -->
+        <div class="link-card" style="cursor: default; opacity:0.8;"><span class="link-icon">🎛️</span><span class="link-text">Core Control <span class="placeholder-tag">скоро</span></span></div>
+        <div class="link-card" style="cursor: default; opacity:0.8;"><span class="link-icon">📈</span><span class="link-text">Story Progression <span class="placeholder-tag">в разработке</span></span></div>
+        <div class="link-card" style="cursor: default; opacity:0.8;"><span class="link-icon">🌍</span><span class="link-text">Realism Mods <span class="placeholder-tag">coming soon</span></span></div>
+        <div class="link-card" style="cursor: default; opacity:0.8;"><span class="link-icon">🛠️</span><span class="link-text">Utility Mods <span class="placeholder-tag">ожидайте</span></span></div>
+      </div>
+    </div>
+
+    <!-- БЛОК 5: Build & Buy -->
+    <div class="block">
+      <h2>📂 Build & Buy</h2>
+      <div class="links-list">
+        <a href="https://t.me/+p2haOTD0gzZiZjMy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🏠</span><span class="link-text">Build Main</span></a>
+        <a href="https://t.me/+eT7ru_3moHxiZWE6" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🏘️</span><span class="link-text">Lots</span></a>
+        <a href="https://t.me/+HNqK95PZ-BBjMWEy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🚪</span><span class="link-text">Rooms</span></a>
+        <a href="https://t.me/+Vx-IQZ3Vd8FjYjdi" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🛋️</span><span class="link-text">Furniture</span></a>
+        <a href="https://t.me/+K78IeXCKrQxlZDAy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🖼️</span><span class="link-text">Decor</span></a>
+      </div>
+    </div>
+
+    <!-- БЛОК 6: FULL PACKS -->
+    <div class="block">
+      <h2>📂 FULL PACKS</h2>
+      <div class="links-list">
+        <a href="https://t.me/+zn_lT8Q5dkc4YzQy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">📦</span><span class="link-text">Full Packs</span></a>
+        <a href="https://t.me/+-lu_igTjVFExZmEy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">👥</span><span class="link-text">Characters</span></a>
+        <a href="https://t.me/+ZtV1H6ZJSdE5MGRi" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🎬</span><span class="link-text">Scenes</span></a>
+        <a href="https://t.me/+WvBaxkE7MRw4NjA6" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🕺</span><span class="link-text">Animations</span></a>
+      </div>
+    </div>
+
+    <!-- БЛОК 7: MEN CC -->
+    <div class="block">
+      <h2>📂 MEN CC</h2>
+      <div class="links-list">
+        <a href="https://t.me/MENS_CC" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">👔</span><span class="link-text">MEN CC</span></a>
+        <a href="https://t.me/+8DKnbc5NAr04M2Qy" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">🧥</span><span class="link-text">Menswear</span></a>
+      </div>
+    </div>
+
+    <!-- БЛОК 8: WOMEN CC -->
+    <div class="block">
+      <h2>📂 WOMEN CC</h2>
+      <div class="links-list">
+        <a href="https://t.me/WOMENCC" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">👚</span><span class="link-text">Women CC</span></a>
+        <a href="https://t.me/sims4womenswear" target="_blank" rel="noopener noreferrer" class="link-card"><span class="link-icon">👗</span><span class="link-text">Womenswear</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    ⚡ METAIMPERIYA — всё для The Sims 4 | Все ссылки ведут в Telegram | Ежедневное обновление контента
+  </div>
+</div>
+</body>
+</html>
